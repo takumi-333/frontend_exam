@@ -1,9 +1,13 @@
+import Items from "@/components/Items";
 import React from "react";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <main>
-      <p>Hello World!</p>
+      <Suspense>
+        <Items />
+      </Suspense>
     </main>
   );
 }
