@@ -8,8 +8,8 @@ const Items = async () => {
 
     return(
         <div className = "flex flex-col gap-2">
-            { itemDatas.map((itemData) => {
-                return <Item item={itemData}/>;
+            {itemDatas.map((itemData) => {
+                return <Item key={itemData.id} item={itemData}/>;
             })} 
         </div>
     )
