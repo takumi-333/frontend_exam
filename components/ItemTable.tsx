@@ -9,6 +9,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 
 const ItemTable = async () =>  {
     const itemDatas : QiitaItem[] = await fetchItems(10);
