@@ -1,5 +1,4 @@
-import { fetchItems } from "@/actions/items.action";
-import { QiitaItem, Query } from "@/type";
+import { QiitaItem } from "@/type";
 import React from "react";
 import {
     Table,
@@ -11,9 +10,7 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 
-const ItemTable = async ({query} : {query: Query}) =>  {
-    const itemDatas : QiitaItem[] = await fetchItems(query);
-
+const ItemTable = async ({ itemDatas } : { itemDatas: QiitaItem[]}) =>  {
     return (
       <Table>
         <TableHeader>

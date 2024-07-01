@@ -1,25 +1,32 @@
-import ItemTable from "@/components/ItemTable";
-import { Query } from "@/type";
-import SearchBar from "@/components/SearchBar";
-import React from "react";
-import { Suspense } from "react";
+'use client';
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams?: { query: string };
-}) {
-  const query: Query = {
-    numPage: 1,
-    title: "Python",
-    body: "AI",
-  };
-  console.log(searchParams?.query);
+import ItemTable from "@/components/ItemTable";
+import { QiitaItem, Query } from "@/type";
+import SearchBar from "@/components/SearchBar";
+import React, { useEffect, useState } from "react";
+import { Suspense } from "react";
+import { fetchItems } from "@/actions/items.action";
+
+export default function Home() {
+    const initialQuery: Query = {
+        numPage: 1,
+    };
+    const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
+    const [query, setQuery] = useState<Query>(initialQuery);
+
+    useEffect(() => {
+        fetchItems(query).then(setItemDatas);
+    }, [query]);
+  
+  const handleSearch = (newQuery : Query) => {
+    setQuery(newQuery);
+  }
+
   return (
     <main>
-      <SearchBar />
+      <SearchBar onSearch={handleSearch}/>
       <Suspense>
-        <ItemTable query={query} />
+        <ItemTable itemDatas={itemDatas}/>
       </Suspense>
     </main>
   );

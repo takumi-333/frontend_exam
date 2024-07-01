@@ -1,32 +1,32 @@
 'use client';
 
-import { usePathname, useSearchParams, useRouter} from "next/navigation";
+import { Query } from "@/type";
 import React, { ChangeEvent, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 
-const SearchBar = () => {
-    const searchParams = useSearchParams();
-    const router = useRouter();
-    const pathName = usePathname();
-    const [query, setQuery] = useState('');
+const SearchBar = ( { onSearch } : { onSearch : ( query : Query) => void}) => {
+    const [title, setTitle] = useState<string>("");
+    const [body, setBody] = useState<string>("");
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setQuery(e.target.value);
+        setTitle(e.target.value);
     }
 
     const handleSearch = () => {
-        const params = new URLSearchParams(searchParams);
-        if (query) params.set('query', query);
-        else params.delete('query');
-        router.replace(`${pathName}?${params.toString()}`);
+        const query: Query = {
+            numPage: 1,
+            title: title?title:undefined,
+            body: body?body:undefined,
+        }
+        onSearch(query)
     }
 
     return (
         <div className="w-full flex flex-raw items-center gap-2">
             <input 
-                className="placeholder:text-gray-500 border border-gray-200 outline-2 text-sm rounded-sm w-1/2"
+                className="placeholder:text-gray-500 border border-gray-200 outline-2 text-sm rounded-sm w-1/2 pl-1"
                 type="text" 
-                value={query}
+                value={title}
                 onChange={handleInputChange} 
                 placeholder="タイトル・キーワード・ユーザ名を入力"
             />
