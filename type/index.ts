@@ -30,4 +30,11 @@ export type QiitaItem = {
       twitter_screen_name: string;
       website_url: string;
     };
-  };
+};
+
+export type Query = {
+    title?: string,
+    body?: string,
+    numItems?: number,
+    numPage: number,
+}
