@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import ItemTable from "@/components/ItemTable";
 import { QiitaItem, Query } from "@/type";
@@ -8,25 +8,25 @@ import { Suspense } from "react";
 import { fetchItems } from "@/actions/items.action";
 
 export default function Home() {
-    const initialQuery: Query = {
-        numPage: 1,
-    };
-    const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
-    const [query, setQuery] = useState<Query>(initialQuery);
+  const initialQuery: Query = {
+    numPage: 1,
+  };
+  const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
+  const [query, setQuery] = useState<Query>(initialQuery);
 
-    useEffect(() => {
-        fetchItems(query).then(setItemDatas);
-    }, [query]);
-  
-  const handleSearch = (newQuery : Query) => {
+  useEffect(() => {
+    fetchItems(query).then(setItemDatas);
+  }, [query]);
+
+  const handleSearch = (newQuery: Query) => {
     setQuery(newQuery);
-  }
+  };
 
   return (
     <main>
-      <SearchBar onSearch={handleSearch}/>
+      <SearchBar onSearch={handleSearch} />
       <Suspense>
-        <ItemTable itemDatas={itemDatas}/>
+        <ItemTable itemDatas={itemDatas} />
       </Suspense>
     </main>
   );
