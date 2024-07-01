@@ -2,6 +2,7 @@
 
 import { usePathname, useSearchParams, useRouter} from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
+import { IoIosSearch } from "react-icons/io";
 
 const SearchBar = () => {
     const searchParams = useSearchParams();
@@ -21,15 +22,15 @@ const SearchBar = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full flex flex-raw items-center gap-2">
             <input 
-                className="placeholder:text-gray-500 outline-2 text-sm rounded-sm "
+                className="placeholder:text-gray-500 border border-gray-200 outline-2 text-sm rounded-sm w-1/2"
                 type="text" 
                 value={query}
                 onChange={handleInputChange} 
                 placeholder="タイトル・キーワード・ユーザ名を入力"
             />
-            <button onClick={handleSearch}>検索</button>
+            <button onClick={handleSearch} className="bg-gray-200 hover:bg-gray-300 rounded-sm lg:text-2xl text-xl"><IoIosSearch/></button>
         </div>
     );
 }
