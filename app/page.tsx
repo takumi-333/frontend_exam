@@ -1,7 +1,5 @@
 import ItemTable from "@/components/ItemTable";
 import { Query } from "@/type";
-import React from "react";
-import { Suspense } from "react";
 import SearchBar from "@/components/SearchBar";
 import React from "react";
 import { Suspense } from "react";
