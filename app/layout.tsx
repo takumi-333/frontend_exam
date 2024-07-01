@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -16,11 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className="flex flex-col">
-            <Header/>
-            <div className="container mt-14 pt-5 pb-5">{children}
-            </div>
-        </body>
+      <body className="flex flex-col">
+        <Header />
+        <div className="container mt-14 pt-5 pb-5">{children}</div>
+      </body>
     </html>
   );
 }
