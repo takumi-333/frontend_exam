@@ -1,6 +1,6 @@
 import React from "react";
-import { CardContent } from "./ui/card";
 import ReactMarkDown from "react-markdown";
+import { CardContent } from "../ui/card";
 
 const ItemBody = ({body}: {body:string}) => {
     return (

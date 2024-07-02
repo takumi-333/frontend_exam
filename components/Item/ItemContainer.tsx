@@ -1,11 +1,11 @@
 import { fetchItem } from "@/actions/items.action";
 import { QiitaItem } from "@/type";
 import React from "react";
-import { Card } from "./ui/card";
 import ItemTitle from "./ItemTitle";
 import ItemBody from "./ItemBody";
+import { Card } from "../ui/card";
 
-const Item = async ({id} : {id: string}) => {
+const ItemContainer = async ({id} : {id: string}) => {
     const itemData: QiitaItem = await fetchItem(id);
     return (
         <Card>
@@ -15,4 +15,4 @@ const Item = async ({id} : {id: string}) => {
     )
 }
 
-export default Item
+export default ItemContainer
