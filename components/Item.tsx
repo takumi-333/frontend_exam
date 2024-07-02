@@ -10,7 +10,7 @@ const Item = async ({id} : {id: string}) => {
     return (
         <Card>
             <ItemTitle title={itemData.title}/>
-            <ItemBody body={itemData.rendered_body}/>
+            <ItemBody body={itemData.body}/>
         </Card>
     )
 }
