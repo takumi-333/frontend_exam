@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
 import { fetchItems } from "@/actions/items.action";
 import Modal from "@/components/Modal";
+import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 
 export default function Home() {
   const initialQuery: Query = {
@@ -14,10 +15,10 @@ export default function Home() {
   };
   const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
   const [query, setQuery] = useState<Query>(initialQuery);
-  const [apiKey, setApiKey] = useState<string>("");
+  const apiKeyValue = useApiKeyContext();
 
   useEffect(() => {
-    fetchItems(query, apiKey).then(setItemDatas);
+    fetchItems(query, apiKeyValue.state).then(setItemDatas);
   }, [query]);
 
   const handleSearch = (newQuery: Query) => {
@@ -25,7 +26,7 @@ export default function Home() {
   };
 
   const handleRegister = (newApiKey: string) => {
-    setApiKey(newApiKey);
+    apiKeyValue.setState(newApiKey);
   };
 
   return (
