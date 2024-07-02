@@ -4,17 +4,23 @@ import axios from "axios";
 import { QiitaItem, Query } from "@/type";
 import { createQuery } from "@/lib/utils";
 
-export async function fetchItems(query : Query): Promise<QiitaItem[]>
+export async function fetchItems(query : Query, apiKey : string): Promise<QiitaItem[]>
 {
     const queryString = createQuery(query);
     try 
     {
         const apiUrl = `${process.env.QIITA_API_URL}${queryString}`;
-        const response = await axios.get(apiUrl, {
-            headers: {
-              Authorization: `Bearer ${process.env.BEARER_TOKEN}`
-            }
-        });
+        let response;
+        if (apiKey) {
+            response = await axios.get(apiUrl, {
+                headers: {
+                Authorization: `Bearer ${apiKey}`
+                }
+            });
+        }
+        else {
+            response = await axios.get(apiUrl);
+        }
         return response.data;
     }
     catch(error)
