@@ -1,13 +1,13 @@
+import { fetchItem } from "@/actions/items.action";
 import { QiitaItem } from "@/type";
 import React from "react";
 
-const Item = ({item} : {item: QiitaItem}) => {
-    if (!item) return null;
-
+const Item = async ({id} : {id: string}) => {
+    const itemData: QiitaItem = await fetchItem(id);
     return (
-        <div className="flex">
-            <div className="w-1/3">{item.id}</div>
-            <div className="w-1/3">{item.title}</div>
+        <div className="flex flex-col">
+            <div className="w-1/3">id: {itemData.id}</div>
+            <div className="w-1/3">title: {itemData.title}</div>
         </div>
     )
 }
