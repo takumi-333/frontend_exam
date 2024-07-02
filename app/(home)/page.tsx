@@ -31,11 +31,17 @@ export default function Home() {
 
   return (
     <main>
-      <SearchBar onSearch={handleSearch} />
-      <Modal onRegister={handleRegister} />
-      <Suspense>
-        <ItemTable itemDatas={itemDatas} />
-      </Suspense>
+        <div className="flex flex-col gap-2">
+            <div className="flex flex-raw">
+                <SearchBar onSearch={handleSearch} />
+                <div className="flex justify-items-end">
+                <Modal onRegister={handleRegister} />
+                </div>
+            </div>
+            <Suspense>
+                <ItemTable itemDatas={itemDatas} />
+            </Suspense>
+        </div>
     </main>
   );
 }
