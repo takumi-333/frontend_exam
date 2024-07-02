@@ -7,6 +7,7 @@ export type QiitaItem = {
     page_views_count: number;
     private: boolean;
     reactions_count: number;
+    body: string;
     rendered_body: string;
     tags: { name: string; versions: [] }[];
     title: string;
