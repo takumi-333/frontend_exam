@@ -6,8 +6,8 @@ const Item = async ({id} : {id: string}) => {
     const itemData: QiitaItem = await fetchItem(id);
     return (
         <div className="flex flex-col">
-            <div className="w-1/3">id: {itemData.id}</div>
-            <div className="w-1/3">title: {itemData.title}</div>
+            <div>id: {itemData.id}</div>
+            <div>title: {itemData.title}</div>
         </div>
     )
 }
