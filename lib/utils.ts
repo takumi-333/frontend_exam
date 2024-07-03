@@ -11,7 +11,9 @@ export function createQuery(query: Query): string {
     if (query.numItems) queryString += `&per_page=${query.numItems}`;
     if (query.body || query.title || query.userId) {
         queryString += "&query=";
-        queryString += query.body?`body:${query.body} OR `:"";
+        queryString += query.body?`body:${query.body} `:"";
+        queryString += query.userId?`user:${query.userId} `:"";
+        queryString += "OR "
         queryString += query.title?`title:${query.title} `:"";
         queryString += query.userId?`user:${query.userId}`: "";
     }
