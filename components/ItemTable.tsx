@@ -25,7 +25,7 @@ const ItemTable = async ({ itemDatas } : { itemDatas: QiitaItem[]}) =>  {
             <TableRow key={itemData.id}>
               <TableCell className="font-semibold text-base">{itemData.title}</TableCell>
               <TableCell>
-                {itemData.user.name ? (
+                {itemData.user.id ? (
                     <p className="text-sm">{itemData.user.id}</p>
                 ): (
                     <p className="text-sm text-muted-foreground">不明</p>
