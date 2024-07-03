@@ -36,6 +36,7 @@ export type QiitaItem = {
 export type Query = {
     title?: string,
     body?: string,
+    userId?: string,
     numItems?: number,
     numPage: number,
 }
