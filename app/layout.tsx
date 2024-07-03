@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className="flex flex-col">
         <Header />
         <ApiKeyProvider>
-          <div className="container mt-14 pt-5 pb-5">{children}</div>
+          <div className="container mt-14 py-10 lg:px-32 px-10">{children}</div>
         </ApiKeyProvider>
       </body>
     </html>

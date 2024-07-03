@@ -16,27 +16,27 @@ const ItemTable = async ({ itemDatas } : { itemDatas: QiitaItem[]}) =>  {
         <TableHeader>
           <TableRow>
             <TableHead>タイトル</TableHead>
-            <TableHead>ユーザー名</TableHead>
+            <TableHead>ユーザID</TableHead>
             <TableHead>URL</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {itemDatas.map((itemData) => (
             <TableRow key={itemData.id}>
-              <TableCell>{itemData.title}</TableCell>
+              <TableCell className="font-semibold text-base">{itemData.title}</TableCell>
               <TableCell>
-                {itemData.user.name ? (
-                    <p>{itemData.user.name}</p>
+                {itemData.user.id ? (
+                    <p className="text-sm">{itemData.user.id}</p>
                 ): (
-                    <p className="text-muted-foreground">不明</p>
+                    <p className="text-sm text-muted-foreground">不明</p>
                 )}
               </TableCell>
               <TableCell>
-                <a className="text-blue-600 hover:text-blue-400 hover:underline" href={itemData.url}>投稿ページ</a>
+                <a className="text-sm whitespace-nowrap text-blue-600 hover:text-blue-400 hover:underline" href={itemData.url}>投稿ページ</a>
               </TableCell>
               <TableCell>
                 <Link href={`/${itemData.id}`}>
-                <button className="relative h-12 overflow-hidden rounded-md border border-neutral-200 bg-transparent px-6 text-neutral-950 before:absolute before:bottom-0 before:left-0 before:block before:h-full before:w-full before:-translate-x-full before:bg-neutral-100 before:transition-transform hover:before:translate-x-0"><span className="relative">詳細</span></button>
+                <button className="whitespace-nowrap relative h-12 overflow-hidden rounded-md border border-neutral-300 bg-transparent px-6 text-neutral-950 before:absolute before:bottom-0 before:left-0 before:block before:h-full before:w-full before:-translate-x-full before:bg-neutral-100 before:transition-transform hover:before:translate-x-0"><span className=" text-xs whitespace-nowarp relative">詳細</span></button>
                 </Link>
               </TableCell>
             </TableRow>
