@@ -37,17 +37,17 @@ export default function Home() {
 
   return (
     <main>
-        <div className="flex flex-col gap-2">
-            <div className="flex flex-raw">
-                <SearchBar onSearch={handleSearch} />
-                <div className="flex justify-items-end">
-                <Modal onRegister={handleRegister} />
-                </div>
-            </div>
-            <Suspense>
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-raw">
+          <SearchBar onSearch={handleSearch} />
+          <div className="flex justify-items-end">
+            <Modal onRegister={handleRegister} />
+          </div>
+        </div>
+           <Suspense>
                 {loading ? <TableSkeleton/> : <ItemTable itemDatas={itemDatas}/>}
             </Suspense>
-        </div>
+      </div>
     </main>
   );
 }
