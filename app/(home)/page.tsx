@@ -9,6 +9,8 @@ import { fetchItems } from "@/actions/items.action";
 import Modal from "@/components/Modal";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import TableSkeleton from "@/components/TableSkeleton";
+import PrevButton from "@/components/PrevButton";
+import NextButton from "@/components/NextButton";
 
 export default function Home() {
   const initialQuery: Query = {
@@ -31,6 +33,12 @@ export default function Home() {
     setQuery(newQuery);
   };
 
+  const handlePage = (n: number) => {
+    const newQuery = structuredClone(query);
+    newQuery.numPage += n;
+    setQuery(newQuery);
+  };
+
   const handleRegister = (newApiKey: string) => {
     apiKeyValue.setState(newApiKey);
   };
@@ -47,6 +55,26 @@ export default function Home() {
         <Suspense>
           {loading ? <TableSkeleton /> : <ItemTable itemDatas={itemDatas} />}
         </Suspense>
+        {loading ? (
+          <></>
+        ) : (
+          <div className="flex justify-between">
+            {query.numPage > 1 ? (
+              <div className="flex-1">
+                <PrevButton onPrev={handlePage} />
+              </div>
+            ) : (
+              <div className="flex-1"></div>
+            )}
+            {query.numPage < 100 && itemDatas.length != 0 ? (
+              <div className="flex-1 text-right">
+                <NextButton onNext={handlePage} />
+              </div>
+            ) : (
+              <div className="flex-1"></div>
+            )}
+          </div>
+        )}
       </div>
     </main>
   );
