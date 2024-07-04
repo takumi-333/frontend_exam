@@ -5,7 +5,7 @@ import ContainerSkeleton from "@/components/Item/ContainerSkeleton";
 import ItemContainer from "@/components/Item/ItemContainer";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import { QiitaItem } from "@/type";
-import React, { Suspense, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 const page = ({ params: { id } }: { params: { id: string } }) => {
   const apiKeyValue = useApiKeyContext();
@@ -14,15 +14,15 @@ const page = ({ params: { id } }: { params: { id: string } }) => {
   useLayoutEffect(() => {
     setLoading(true);
     fetchItem(id, apiKeyValue.state).then((itemData) => {
-        setItemData(itemData);
-        setLoading(false);
+      setItemData(itemData);
+      setLoading(false);
     });
   }, []);
 
   return (
     <div className="flex flex-col gap-2">
       <BackButton />
-        {loading ? <ContainerSkeleton/> : <ItemContainer itemData={itemData} />}
+      {loading ? <ContainerSkeleton /> : <ItemContainer itemData={itemData} />}
     </div>
   );
 };

@@ -22,8 +22,8 @@ export default function Home() {
   useEffect(() => {
     setLoading(true);
     fetchItems(query, apiKeyValue.state).then((itemDatas) => {
-        setItemDatas(itemDatas);
-        setLoading(false);
+      setItemDatas(itemDatas);
+      setLoading(false);
     });
   }, [query]);
 
@@ -44,9 +44,9 @@ export default function Home() {
             <Modal onRegister={handleRegister} />
           </div>
         </div>
-           <Suspense>
-                {loading ? <TableSkeleton/> : <ItemTable itemDatas={itemDatas}/>}
-            </Suspense>
+        <Suspense>
+          {loading ? <TableSkeleton /> : <ItemTable itemDatas={itemDatas} />}
+        </Suspense>
       </div>
     </main>
   );

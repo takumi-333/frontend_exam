@@ -1,5 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton"
-import { Card, CardTitle } from "../ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Card } from "../ui/card";
+import React from "react";
 
 const ContainerSkeleton = () => {
   return (
