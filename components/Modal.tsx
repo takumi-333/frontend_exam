@@ -5,6 +5,7 @@ import { BiCog } from "react-icons/bi";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { Button } from "./ui/button";
 
 const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
     const [apiKey, setApiKey] = useState<string>("");
@@ -20,9 +21,11 @@ const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button type="button" className="bg-gray-200 hover:bg-gray-300 rounded-sm lg:text-2xl text-xl w-fit">
-                    <BiCog/>
-                </button>
+                <Button 
+                variant="outline"
+                size="icon">
+                    <BiCog className="h-4 w-4"/>
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -40,7 +43,7 @@ const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
             </div>
             </div>
             <DialogFooter>
-            <button type="button" onClick={handleRegister}>Save</button>
+            <Button onClick={handleRegister}>Save</Button>
             </DialogFooter>
             </DialogContent>
         </Dialog>

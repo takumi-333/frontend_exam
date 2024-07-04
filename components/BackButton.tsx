@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import React from "react";
+import { Button } from "./ui/button";
 
 const BackButton = () => {
     const router = useRouter();
@@ -12,12 +13,12 @@ const BackButton = () => {
     }
 
     return (
-        <button 
-        className="bg-gray-200 hover:bg-gray-300 rounded-sm lg:text-2xl text-xl w-fit"
-        type="button"
-        onClick={handleClick}>
-            <IoMdArrowRoundBack/>
-        </button>
+        <Button
+           variant="outline"
+           size="icon" 
+           onClick={handleClick}>
+            <IoMdArrowRoundBack className="h-4 w-4"/>
+        </Button>
     )
 };
 
