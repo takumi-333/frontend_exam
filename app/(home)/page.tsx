@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { fetchItems } from "@/actions/items.action";
 import Modal from "@/components/Modal";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
+import TableSkeleton from "@/components/TableSkeleton";
 
 export default function Home() {
   const initialQuery: Query = {
@@ -15,10 +16,15 @@ export default function Home() {
   };
   const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
   const [query, setQuery] = useState<Query>(initialQuery);
+  const [loading, setLoading] = useState<boolean>(false);
   const apiKeyValue = useApiKeyContext();
 
   useEffect(() => {
-    fetchItems(query, apiKeyValue.state).then(setItemDatas);
+    setLoading(true);
+    fetchItems(query, apiKeyValue.state).then((itemDatas) => {
+        setItemDatas(itemDatas);
+        setLoading(false);
+    });
   }, [query]);
 
   const handleSearch = (newQuery: Query) => {
@@ -39,7 +45,7 @@ export default function Home() {
                 </div>
             </div>
             <Suspense>
-                <ItemTable itemDatas={itemDatas} />
+                {loading ? <TableSkeleton/> : <ItemTable itemDatas={itemDatas}/>}
             </Suspense>
         </div>
     </main>
