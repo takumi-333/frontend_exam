@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import React from "react";
 
-const ContainerSkeleton = () => {
+const ItemContainerSkeleton = () => {
   return (
     <Card>
       <Skeleton className="w-full h-screen" />
@@ -10,4 +10,4 @@ const ContainerSkeleton = () => {
   );
 };
 
-export default ContainerSkeleton;
+export default ItemContainerSkeleton;

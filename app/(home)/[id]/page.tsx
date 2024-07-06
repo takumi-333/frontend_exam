@@ -1,11 +1,11 @@
 "use client";
 import { fetchItem } from "@/actions/items.action";
-import ContainerSkeleton from "./_components/ContainerSkeleton";
 import ItemContainer from "./_components/ItemContainer";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import { QiitaItem } from "@/type";
 import React, { useLayoutEffect, useState } from "react";
-import BackButton from "./_components/BackButton";
+import BackButton from "@/components/BackButton";
+import ItemContainerSkeleton from "./_components/ItemContainerSkeleton";
 
 const page = ({ params: { id } }: { params: { id: string } }) => {
   const apiKeyValue = useApiKeyContext();
@@ -22,7 +22,11 @@ const page = ({ params: { id } }: { params: { id: string } }) => {
   return (
     <div className="flex flex-col gap-2">
       <BackButton />
-      {loading ? <ContainerSkeleton /> : <ItemContainer itemData={itemData} />}
+      {loading ? (
+        <ItemContainerSkeleton />
+      ) : (
+        <ItemContainer itemData={itemData} />
+      )}
     </div>
   );
 };

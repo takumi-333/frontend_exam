@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QiitaItem, QiitaUser } from "@/type";
-import { fetchUser } from "@/actions/items.action";
+import { fetchUser } from "@/actions/user.action";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import ItemUserInfo from "./ItemUserInfo";
 import { parseISO, format } from "date-fns";
