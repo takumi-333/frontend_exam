@@ -1,15 +1,16 @@
 import { QiitaItem } from "@/type";
 import React from "react";
-import ItemTitle from "./ItemTitle";
 import ItemBody from "./ItemBody";
 import { Card } from "../ui/card";
+import ItemHeader from "./ItemHeader";
 
 const ItemContainer = ({itemData}: {itemData?: QiitaItem}) => {
+    
     return (
-        <Card>
+        <Card className="p-4">
             {itemData && (
                 <>
-                    <ItemTitle title={itemData.title}/>
+                    <ItemHeader itemData={itemData}/>
                     <ItemBody body={itemData.body}/>
                 </>
             )}
