@@ -52,7 +52,15 @@ export default function Home() {
             <ApiKeyModal onRegister={handleRegister} />
           </div>
         </div>
-        <ItemtableContainer TableContent={loading ? <TableSkeleton /> : <ItemTableContent itemDatas={itemDatas} />}/>
+        <ItemtableContainer
+          TableContent={
+            loading ? (
+              <TableSkeleton />
+            ) : (
+              <ItemTableContent itemDatas={itemDatas} />
+            )
+          }
+        />
         {loading ? (
           <></>
         ) : (
