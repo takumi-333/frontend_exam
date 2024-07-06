@@ -1,11 +1,11 @@
 "use client";
 import { fetchItem } from "@/actions/items.action";
-import BackButton from "@/components/BackButton";
-import ContainerSkeleton from "@/components/Item/ContainerSkeleton";
-import ItemContainer from "@/components/Item/ItemContainer";
+import ContainerSkeleton from "./_components/ContainerSkeleton";
+import ItemContainer from "./_components/ItemContainer";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import { QiitaItem } from "@/type";
 import React, { useLayoutEffect, useState } from "react";
+import BackButton from "./_components/BackButton";
 
 const page = ({ params: { id } }: { params: { id: string } }) => {
   const apiKeyValue = useApiKeyContext();

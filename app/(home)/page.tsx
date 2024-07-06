@@ -1,16 +1,16 @@
 "use client";
 
-import ItemTableContent from "@/components/ItemTableContent";
+import ItemTableContent from "./_components/ItemTableContent";
 import { QiitaItem, Query } from "@/type";
-import SearchBar from "@/components/SearchBar";
+import SearchBar from "./_components/SearchBar";
 import React, { useEffect, useState } from "react";
 import { fetchItems } from "@/actions/items.action";
 import ApiKeyModal from "@/components/ApiKeyModal";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
-import TableSkeleton from "@/components/TableSkeleton";
-import PrevButton from "@/components/PrevButton";
-import NextButton from "@/components/NextButton";
-import ItemtableContainer from "@/components/ItemTableContainer";
+import TableSkeleton from "./_components/TableSkeleton";
+import PrevButton from "./_components/PrevButton";
+import NextButton from "./_components/NextButton";
+import ItemtableContainer from "./_components/ItemTableContainer";
 
 export default function Home() {
   const initialQuery: Query = {
