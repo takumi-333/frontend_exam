@@ -4,6 +4,7 @@ export type QiitaItem = {
     created_at: string;
     id: string;
     likes_count: number;
+    stocks_count: number;
     page_views_count: number;
     private: boolean;
     reactions_count: number;
