@@ -25,14 +25,15 @@ export default function Home() {
   useEffect(() => {
     setError(false);
     setLoading(true);
-    fetchItems(query, apiKeyValue.state).then((itemDatas) => {
-      setItemDatas(itemDatas);
-      setLoading(false);
-    })
-    .catch(() => {
+    fetchItems(query, apiKeyValue.state)
+      .then((itemDatas) => {
+        setItemDatas(itemDatas);
+        setLoading(false);
+      })
+      .catch(() => {
         setLoading(false);
         setError(true);
-    });
+      });
   }, [query]);
 
   const handleSearch = (newQuery: Query) => {
@@ -59,23 +60,27 @@ export default function Home() {
           </div>
         </div>
         {error ? (
-            <div className="text-red-500 text-base flex my-2">Error: cannnot get datas</div>
-        ): !loading && itemDatas.length==0 && (
+          <div className="text-red-500 text-base flex my-2">
+            Error: cannnot get datas
+          </div>
+        ) : (
+          !loading &&
+          itemDatas.length == 0 && (
             <div className="text-red-500 text-base flex my-2">No datas...</div>
+          )
         )}
         <ItemtableContainer
           TableContent={
             error ? (
-                <></>
-            )
-            : loading ? (
+              <></>
+            ) : loading ? (
               <TableSkeleton />
             ) : (
               <ItemTableContent itemDatas={itemDatas} />
             )
           }
         />
-        {(loading || error) ? (
+        {loading || error ? (
           <></>
         ) : (
           <div className="flex justify-between">
