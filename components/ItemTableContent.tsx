@@ -2,7 +2,7 @@ import { QiitaItem } from "@/type";
 import React from "react";
 import { TableBody, TableCell, TableRow } from "@/components/ui/table";
 import Link from "next/link";
-import { Button } from "../../../components/ui/button";
+import { Button } from "./ui/button";
 
 const ItemTableContent = ({ itemDatas }: { itemDatas: QiitaItem[] }) => {
   return (
@@ -14,7 +14,10 @@ const ItemTableContent = ({ itemDatas }: { itemDatas: QiitaItem[] }) => {
           </TableCell>
           <TableCell>
             {itemData.user.id ? (
-              <p className="text-sm">{itemData.user.id}</p>
+                <Link href={`/user/${itemData.user.id}`}>
+                    <p className="hover:underline text-sm">@{itemData.user.id}</p>
+                </Link>
+              
             ) : (
               <p className="text-sm text-muted-foreground">不明</p>
             )}
@@ -29,7 +32,7 @@ const ItemTableContent = ({ itemDatas }: { itemDatas: QiitaItem[] }) => {
           </TableCell>
           <TableCell>
             <Button asChild variant="outline">
-              <Link href={`${itemData.id}`}>詳細</Link>
+              <Link href={`/${itemData.id}`}>詳細</Link>
             </Button>
           </TableCell>
         </TableRow>
