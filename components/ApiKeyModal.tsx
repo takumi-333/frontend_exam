@@ -7,7 +7,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 
-const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
+const ApiKeyModal = ( {onRegister} : {onRegister: (key: string) => void}) => {
     const [apiKey, setApiKey] = useState<string>("");
 
     const handleInputChange = (e:ChangeEvent<HTMLInputElement>) => {
@@ -50,4 +50,4 @@ const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
     );
 };
 
-export default Modal;
+export default ApiKeyModal;

@@ -6,7 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
 import { fetchItems } from "@/actions/items.action";
-import Modal from "@/components/Modal";
+import ApiKeyModal from "@/components/ApiKeyModal";
 import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import TableSkeleton from "@/components/TableSkeleton";
 import PrevButton from "@/components/PrevButton";
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="flex flex-raw">
           <SearchBar onSearch={handleSearch} />
           <div className="flex justify-items-end">
-            <Modal onRegister={handleRegister} />
+            <ApiKeyModal onRegister={handleRegister} />
           </div>
         </div>
         <Suspense>
