@@ -8,10 +8,10 @@ const TableSkeleton = () => {
           {[...Array(5)].map((_, i) => (
             <TableRow key={i}>
               <TableCell>
-                <Skeleton className="h-4 w-[80px]" />
+                <Skeleton className="h-4 w-[270px]" />
               </TableCell>
               <TableCell>
-                <Skeleton className="h-4 w-[80px]" />
+                <Skeleton className="h-4 w-[120px]" />
               </TableCell>
               <TableCell>
                 <Skeleton className="h-4 w-[80px]" />
