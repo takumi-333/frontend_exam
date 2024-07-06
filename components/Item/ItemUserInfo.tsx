@@ -1,5 +1,4 @@
 import { QiitaUser } from "@/type";
-import Image from "next/image";
 import React from "react";
 
 const ItemUserInfo = ({userData}: {userData?: QiitaUser}) => {
@@ -7,7 +6,7 @@ const ItemUserInfo = ({userData}: {userData?: QiitaUser}) => {
         <div className="flex flex-col gap-1">
             {userData && (
                 <div className="flex flex-raw gap-2">
-                    <Image 
+                    <img
                     src={userData.profile_image_url} 
                     alt="profile image" 
                     width={32} 
