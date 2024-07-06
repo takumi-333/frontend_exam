@@ -1,17 +1,9 @@
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
+import {  TableRow, TableBody, TableCell } from "@/components/ui/table"
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
 const TableSkeleton = () => {
   return (
-      <Table>
-        <TableHeader>
-        <TableRow>
-            <TableHead>タイトル</TableHead>
-            <TableHead>ユーザID</TableHead>
-            <TableHead>URL</TableHead>
-          </TableRow>
-        </TableHeader>
         <TableBody>
           {[...Array(5)].map((_, i) => (
             <TableRow key={i}>
@@ -30,7 +22,6 @@ const TableSkeleton = () => {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
   )
 }
 
