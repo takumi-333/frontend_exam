@@ -2,7 +2,7 @@ import { QiitaUser } from "@/type";
 import Image from "next/image";
 import React from "react";
 
-const UserInfo = ({userData}: {userData?: QiitaUser}) => {
+const ItemUserInfo = ({userData}: {userData?: QiitaUser}) => {
     return (
         <div className="flex flex-col gap-1">
             {userData && (
@@ -20,4 +20,4 @@ const UserInfo = ({userData}: {userData?: QiitaUser}) => {
     )
 }
 
-export default UserInfo;
+export default ItemUserInfo;
