@@ -1,26 +1,15 @@
 import { QiitaItem } from "@/type";
 import React from "react";
 import {
-    Table,
     TableBody,
     TableCell,
-    TableHead,
-    TableHeader,
     TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
-const ItemTable = async ({ itemDatas } : { itemDatas: QiitaItem[]}) =>  {
+const ItemTableContent = ({ itemDatas } : { itemDatas: QiitaItem[]}) =>  {
     return (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>タイトル</TableHead>
-            <TableHead>ユーザID</TableHead>
-            <TableHead>URL</TableHead>
-          </TableRow>
-        </TableHeader>
         <TableBody>
           {itemDatas.map((itemData) => (
             <TableRow key={itemData.id}>
@@ -43,8 +32,7 @@ const ItemTable = async ({ itemDatas } : { itemDatas: QiitaItem[]}) =>  {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
     )
   }
 
-export default ItemTable
+export default ItemTableContent

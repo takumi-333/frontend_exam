@@ -3,10 +3,11 @@ import { CardContent, CardHeader, CardTitle } from "../ui/card";
 import { QiitaItem, QiitaUser } from "@/type";
 import { fetchUser } from "@/actions/items.action";
 import { useApiKeyContext } from "../providers/ApiKeyProvider";
-import UserInfo from "./UserInfo";
+import ItemUserInfo from "./ItemUserInfo";
 import { parseISO, format } from 'date-fns';
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoBookmarkOutline } from "react-icons/io5";
+import UserInfoSkeleton from "./UserInfoSkeleton";
 
 
 const ItemHeader = ({itemData}:{itemData:QiitaItem}) => {
@@ -23,8 +24,8 @@ const ItemHeader = ({itemData}:{itemData:QiitaItem}) => {
 
     return (
         <CardHeader className="gap-1 border-b py-1">
-            <CardContent className="p-0">
-                <UserInfo userData={userData}/>
+            <CardContent className="p-0 py-1">
+                {userLoading ? <UserInfoSkeleton/> : <ItemUserInfo userData={userData}/>}
             </CardContent>
             <CardTitle className="font-bold lg:text-3xl md:text-2xl sm:text-xl py-1">
                 {itemData.title}
