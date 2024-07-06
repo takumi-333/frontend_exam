@@ -19,13 +19,19 @@ export default function Home() {
   const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
   const [query, setQuery] = useState<Query>(initialQuery);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const apiKeyValue = useApiKeyContext();
 
   useEffect(() => {
+    setError(false);
     setLoading(true);
     fetchItems(query, apiKeyValue.state).then((itemDatas) => {
       setItemDatas(itemDatas);
       setLoading(false);
+    })
+    .catch(() => {
+        setLoading(false);
+        setError(true);
     });
   }, [query]);
 
@@ -52,16 +58,24 @@ export default function Home() {
             <ApiKeyModal onRegister={handleRegister} />
           </div>
         </div>
+        {error ? (
+            <div className="text-red-500 text-base flex my-2">Error: cannnot get datas</div>
+        ): !loading && itemDatas.length==0 && (
+            <div className="text-red-500 text-base flex my-2">No datas...</div>
+        )}
         <ItemtableContainer
           TableContent={
-            loading ? (
+            error ? (
+                <></>
+            )
+            : loading ? (
               <TableSkeleton />
             ) : (
               <ItemTableContent itemDatas={itemDatas} />
             )
           }
         />
-        {loading ? (
+        {(loading || error) ? (
           <></>
         ) : (
           <div className="flex justify-between">
