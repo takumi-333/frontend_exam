@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 const ApiKeyModal = ( {onRegister} : {onRegister: (key: string) => void}) => {
     const [apiKey, setApiKey] = useState<string>("");
@@ -43,7 +44,9 @@ const ApiKeyModal = ( {onRegister} : {onRegister: (key: string) => void}) => {
             </div>
             </div>
             <DialogFooter>
-            <Button onClick={handleRegister}>Save</Button>
+                <DialogClose asChild>
+                    <Button onClick={handleRegister}>Save</Button>
+                </DialogClose>
             </DialogFooter>
             </DialogContent>
         </Dialog>
