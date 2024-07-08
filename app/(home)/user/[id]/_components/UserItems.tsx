@@ -1,21 +1,22 @@
 import { fetchItemsByUser } from "@/actions/items.action";
+import { apiKeyState } from "@/app/state/apiKeyState";
 import ItemtableContainer from "@/components/ItemTableContainer";
 import ItemTableContent from "@/components/ItemTableContent";
 import TableSkeleton from "@/components/TableSkeleton";
-import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import { QiitaItem, QiitaUser } from "@/type";
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 const UserItems = ({ userData }: { userData: QiitaUser }) => {
   const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const apiKeyValue = useApiKeyContext();
+  const apiKey = useRecoilValue(apiKeyState);
 
   useEffect(() => {
     setError(false);
     setLoading(true);
-    fetchItemsByUser(userData.id, apiKeyValue.state)
+    fetchItemsByUser(userData.id, apiKey)
       .then((itemDatas) => {
         setItemDatas(itemDatas);
         setLoading(false);
