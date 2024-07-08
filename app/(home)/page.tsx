@@ -5,12 +5,13 @@ import { QiitaItem, Query } from "@/type";
 import SearchBar from "./_components/SearchBar";
 import React, { useEffect, useState } from "react";
 import ApiKeyModal from "@/components/ApiKeyModal";
-import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import TableSkeleton from "@/components/TableSkeleton";
 import PrevButton from "./_components/PrevButton";
 import NextButton from "./_components/NextButton";
 import ItemtableContainer from "@/components/ItemTableContainer";
 import { fetchItems } from "@/actions/items.action";
+import { useRecoilValue } from "recoil";
+import { apiKeyState } from "../state/apiKeyState";
 
 export default function Home() {
   const initialQuery: Query = {
@@ -20,12 +21,12 @@ export default function Home() {
   const [query, setQuery] = useState<Query>(initialQuery);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const apiKeyValue = useApiKeyContext();
+  const apiKey = useRecoilValue(apiKeyState);
 
   useEffect(() => {
     setError(false);
     setLoading(true);
-    fetchItems(query, apiKeyValue.state)
+    fetchItems(query, apiKey)
       .then((itemDatas) => {
         setItemDatas(itemDatas);
         setLoading(false);
@@ -46,17 +47,14 @@ export default function Home() {
     setQuery(newQuery);
   };
 
-  const handleRegister = (newApiKey: string) => {
-    apiKeyValue.setState(newApiKey);
-  };
-
   return (
     <main>
       <div className="flex flex-col gap-2">
+        <p> apikey: {apiKey} </p>
         <div className="flex flex-raw">
           <SearchBar onSearch={handleSearch} />
           <div className="flex justify-items-end">
-            <ApiKeyModal onRegister={handleRegister} />
+            <ApiKeyModal />
           </div>
         </div>
         {error ? (
