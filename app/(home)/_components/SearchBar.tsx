@@ -5,11 +5,15 @@ import React, { ChangeEvent, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRecoilState } from "recoil";
+import { queryState } from "@/app/state/queryState";
 
-const SearchBar = ({ onSearch }: { onSearch: (query: Query) => void }) => {
-  const [keyword, setKeyword] = useState<string>("");
-  const [userId, setUserId] = useState<string>("");
-
+const SearchBar = () => {
+  const [query, setQuery] = useRecoilState(queryState);
+  const [keyword, setKeyword] = useState<string>(query.body ? query.body : "");
+  const [userId, setUserId] = useState<string>(
+    query.userId ? query.userId : "",
+  );
   const handleKeywordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
@@ -19,13 +23,13 @@ const SearchBar = ({ onSearch }: { onSearch: (query: Query) => void }) => {
   };
 
   const handleSearch = () => {
-    const query: Query = {
+    const newQuery: Query = {
       numPage: 1,
       title: keyword ? keyword : undefined,
       body: keyword ? keyword : undefined,
       userId: userId ? userId : undefined,
     };
-    onSearch(query);
+    setQuery(newQuery);
   };
 
   return (

@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QiitaItem, QiitaUser } from "@/type";
 import { fetchUser } from "@/actions/user.action";
-import { useApiKeyContext } from "@/components/providers/ApiKeyProvider";
 import ItemUserInfo from "./ItemUserInfo";
 import { parseISO, format } from "date-fns";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoBookmarkOutline } from "react-icons/io5";
 import UserInfoSkeleton from "./UserInfoSkeleton";
+import { useRecoilValue } from "recoil";
+import { apiKeyState } from "@/app/state/apiKeyState";
 
 const ItemHeader = ({ itemData }: { itemData: QiitaItem }) => {
-  const apiKeyValue = useApiKeyContext();
+  const apiKey = useRecoilValue(apiKeyState);
   const [userData, setUserData] = useState<QiitaUser | undefined>(undefined);
   const [userLoading, setUserLoading] = useState<boolean>(false);
   useEffect(() => {
     setUserLoading(true);
-    fetchUser(itemData.user.id, apiKeyValue.state).then((userData) => {
+    fetchUser(itemData.user.id, apiKey).then((userData) => {
       setUserLoading(false);
       setUserData(userData);
     });
