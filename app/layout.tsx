@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
 import Header from "@/components/Header";
-import ApiKeyProvider from "@/components/providers/ApiKeyProvider";
+import { RecoilRoot } from "recoil";
 
 export const metadata: Metadata = {
   title: "My Qiita",
@@ -18,9 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex flex-col">
         <Header />
-        <ApiKeyProvider>
+        <RecoilRoot>
           <div className="container mt-14 py-10 lg:px-32 px-10">{children}</div>
-        </ApiKeyProvider>
+        </RecoilRoot>
       </body>
     </html>
   );
