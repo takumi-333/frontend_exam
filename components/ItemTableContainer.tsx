@@ -10,9 +10,9 @@ const ItemtableContainer = ({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>タイトル</TableHead>
-          <TableHead>ユーザID</TableHead>
-          <TableHead>URL</TableHead>
+          <TableHead className="text-center">タイトル</TableHead>
+          <TableHead className="text-center">ユーザID</TableHead>
+          <TableHead className="md:table-cell hidden text-center">URL</TableHead>
         </TableRow>
       </TableHeader>
       {TableContent}
