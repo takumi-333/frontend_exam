@@ -6,16 +6,20 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { DialogClose } from "@radix-ui/react-dialog";
+import { useRecoilState } from "recoil";
+import { apiKeyState } from "@/app/state/apiKeyState";
 
-const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
-    const [apiKey, setApiKey] = useState<string>("");
+const ApiKeyModal = () => {
+    const [key, setKey] = useState<string>("");
+    const [, setApiKey] = useRecoilState<string>(apiKeyState);
 
     const handleInputChange = (e:ChangeEvent<HTMLInputElement>) => {
-        setApiKey(e.target.value);
+        setKey(e.target.value);
     };
 
     const handleRegister = () => {
-        onRegister(apiKey);
+        setApiKey(key);
     }
 
     return (
@@ -39,15 +43,17 @@ const Modal = ( {onRegister} : {onRegister: (key: string) => void}) => {
                 <Label htmlFor="name" className="text-right">
                 API Key
                 </Label>
-                <Input id="name" value={apiKey} onChange={handleInputChange} className="col-span-3"/>
+                <Input id="name" value={key} onChange={handleInputChange} className="col-span-3"/>
             </div>
             </div>
             <DialogFooter>
-            <Button onClick={handleRegister}>Save</Button>
+                <DialogClose asChild>
+                    <Button onClick={handleRegister}>Save</Button>
+                </DialogClose>
             </DialogFooter>
             </DialogContent>
         </Dialog>
     );
 };
 
-export default Modal;
+export default ApiKeyModal;

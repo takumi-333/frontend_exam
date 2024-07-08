@@ -1,37 +1,28 @@
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
+import { TableRow, TableBody, TableCell } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
 const TableSkeleton = () => {
   return (
-      <Table>
-        <TableHeader>
-        <TableRow>
-            <TableHead>タイトル</TableHead>
-            <TableHead>ユーザID</TableHead>
-            <TableHead>URL</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {[...Array(5)].map((_, i) => (
-            <TableRow key={i}>
-              <TableCell>
-                <Skeleton className="h-4 w-[80px]" />
-              </TableCell>
-              <TableCell>
-                <Skeleton className="h-4 w-[80px]" />
-              </TableCell>
-              <TableCell>
-                <Skeleton className="h-4 w-[80px]" />
-              </TableCell>
-              <TableCell className="text-right">
-                <Skeleton className="h-4 w-[80px]" />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-  )
-}
+    <TableBody>
+      {[...Array(5)].map((_, i) => (
+        <TableRow key={i}>
+          <TableCell className="w-1/4">
+            <Skeleton className="h-4" />
+          </TableCell>
+          <TableCell className="w-1/12">
+            <Skeleton className="h-4" />
+          </TableCell>
+          <TableCell className="md:table-cell hidden w-1/12">
+            <Skeleton className="h-4" />
+          </TableCell>
+          <TableCell className="text-right w-1/12">
+            <Skeleton className="h-4" />
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  );
+};
 
 export default TableSkeleton;
