@@ -1,10 +1,15 @@
 import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+import { useRecoilState } from "recoil";
+import { queryState } from "@/app/state/queryState";
 
-const NextButton = ({ onNext }: { onNext: (n: number) => void }) => {
+const NextButton = () => {
+  const [query, setQuery] = useRecoilState(queryState);
   const handleNext = () => {
-    onNext(1);
+    const newQuery = structuredClone(query);
+    newQuery.numPage += 1;
+    setQuery(newQuery);
   };
 
   return (

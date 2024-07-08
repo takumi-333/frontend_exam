@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
-import Header from "@/components/Header";
-import ApiKeyProvider from "@/components/providers/ApiKeyProvider";
+import ClientLayout from "@/components/ClientLayout";
 
 export const metadata: Metadata = {
   title: "My Qiita",
@@ -17,10 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col">
-        <Header />
-        <ApiKeyProvider>
-          <div className="container mt-14 py-10 lg:px-32 px-10">{children}</div>
-        </ApiKeyProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

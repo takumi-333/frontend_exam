@@ -1,10 +1,15 @@
 import React from "react";
 import { MdNavigateBefore } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+import { useRecoilState } from "recoil";
+import { queryState } from "@/app/state/queryState";
 
-const PrevButton = ({ onPrev }: { onPrev: (n: number) => void }) => {
+const PrevButton = () => {
+  const [query, setQuery] = useRecoilState(queryState);
   const handlePrev = () => {
-    onPrev(-1);
+    const newQuery = structuredClone(query);
+    newQuery.numPage -= 1;
+    setQuery(newQuery);
   };
 
   return (
