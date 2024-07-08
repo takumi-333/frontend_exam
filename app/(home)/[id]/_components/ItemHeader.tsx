@@ -14,18 +14,28 @@ const ItemHeader = ({ itemData }: { itemData: QiitaItem }) => {
   const apiKey = useRecoilValue(apiKeyState);
   const [userData, setUserData] = useState<QiitaUser | undefined>(undefined);
   const [userLoading, setUserLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   useEffect(() => {
     setUserLoading(true);
-    fetchUser(itemData.user.id, apiKey).then((userData) => {
-      setUserLoading(false);
-      setUserData(userData);
-    });
+    fetchUser(itemData.user.id, apiKey)
+      .then((userData) => {
+        setUserLoading(false);
+        setUserData(userData);
+      })
+      .catch(() => {
+        setUserLoading(false);
+        setError(true);
+      });
   }, []);
 
   return (
     <CardHeader className="gap-1 border-b py-1 mb-4">
       <CardContent className="p-0 py-1">
-        {userLoading ? (
+        {error ? (
+          <div className="text-red-500 text-base flex my-2">
+            Error: Failed to get a user data.
+          </div>
+        ) : userLoading ? (
           <UserInfoSkeleton />
         ) : (
           <ItemUserInfo userData={userData} />
