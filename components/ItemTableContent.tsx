@@ -12,7 +12,7 @@ const ItemTableContent = ({ itemDatas }: { itemDatas: QiitaItem[] }) => {
           <TableCell className="w-1/4 font-semibold sm:text-base text-sm p-2 py-4">
             {itemData.title}
           </TableCell>
-          <TableCell className="w-1/12 text-xs p-1 text-center">
+          <TableCell className="w-1/12 text-sm p-1 text-center">
             {itemData.user.id ? (
                 <Link href={`/user/${itemData.user.id}`}>
                     <p className="hover:underline">@{itemData.user.id}</p>
