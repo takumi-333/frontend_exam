@@ -50,7 +50,6 @@ export default function Home() {
   return (
     <main>
       <div className="flex flex-col gap-2">
-        <p> apikey: {apiKey} </p>
         <div className="flex flex-raw">
           <SearchBar onSearch={handleSearch} />
           <div className="flex justify-items-end">
