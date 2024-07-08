@@ -1,7 +1,7 @@
 "use client";
 
 import { Query } from "@/type";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -32,12 +32,19 @@ const SearchBar = () => {
     setQuery(newQuery);
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="w-full flex flex-raw items-center gap-2">
       <Input
         type="text"
         className="w-1/3"
         value={keyword}
+        onKeyDown={handleKeyDown}
         onChange={handleKeywordInputChange}
         placeholder="キーワードで検索"
       />
@@ -45,6 +52,7 @@ const SearchBar = () => {
         type="text"
         className="w-1/3"
         value={userId}
+        onKeyDown={handleKeyDown}
         onChange={handleUserIdInputChange}
         placeholder="ユーザIDで検索"
       />
