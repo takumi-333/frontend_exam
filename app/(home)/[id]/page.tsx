@@ -12,18 +12,28 @@ const page = ({ params: { id } }: { params: { id: string } }) => {
   const apiKey = useRecoilValue(apiKeyState);
   const [itemData, setItemData] = useState<QiitaItem>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   useLayoutEffect(() => {
     setLoading(true);
-    fetchItem(id, apiKey).then((itemData) => {
-      setItemData(itemData);
-      setLoading(false);
-    });
+    fetchItem(id, apiKey)
+      .then((itemData) => {
+        setItemData(itemData);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(true);
+      });
   }, []);
 
   return (
     <div className="flex flex-col gap-2">
       <BackButton />
-      {loading ? (
+      {error ? (
+        <div className="text-red-500 text-base flex my-2">
+          Error: Failed to get a data.
+        </div>
+      ) : loading ? (
         <ItemContainerSkeleton />
       ) : (
         <ItemContainer itemData={itemData} />

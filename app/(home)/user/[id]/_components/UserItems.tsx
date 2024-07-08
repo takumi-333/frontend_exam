@@ -30,7 +30,7 @@ const UserItems = ({ userData }: { userData: QiitaUser }) => {
     <div className="flex flex-col gap-2">
       {error ? (
         <div className="text-red-500 text-base flex my-2">
-          Error: cannnot get datas
+          Error: Failed to get a datas.
         </div>
       ) : (
         !loading &&
