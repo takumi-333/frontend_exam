@@ -104,6 +104,14 @@
     @apply bg-gray-100 !important;
 }
 
+.copy-button {
+    position: absolute;
+    cursor: pointer;
+    color: #9ca3af;
+    top: 10px;
+    right: 16px;
+}
+
 @layer base {
 :root {
     --background: 0 0% 100%;
