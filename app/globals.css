@@ -2,13 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.py-05 {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+}
+
 .markdown {
     @apply text-gray-900 leading-normal break-words;
 }
 
-/* .markdown > * + * {
+.markdown > * + * {
     @apply mt-0 mb-4;
-} */
+}
 
 .markdown li + li {
     @apply mt-1;
@@ -59,7 +64,7 @@
 }
 
 .markdown code {
-    @apply font-mono text-sm inline bg-gray-200 rounded-sm;
+    @apply font-mono text-sm inline bg-gray-200 rounded-sm px-1;
 }
 
 .markdown pre {
@@ -79,7 +84,7 @@
 }
 
 .markdown kbd {
-    @apply text-xs inline-block rounded border px-1 py-5 align-middle font-normal font-mono shadow;
+    @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
 }
 
 .markdown table {

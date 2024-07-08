@@ -23,7 +23,7 @@ const ItemHeader = ({ itemData }: { itemData: QiitaItem }) => {
   }, []);
 
   return (
-    <CardHeader className="gap-1 border-b py-1">
+    <CardHeader className="gap-1 border-b py-1 mb-4">
       <CardContent className="p-0 py-1">
         {userLoading ? (
           <UserInfoSkeleton />
