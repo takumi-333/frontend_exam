@@ -46,7 +46,7 @@ export default function Home() {
         </div>
         {error ? (
           <div className="text-red-500 text-base flex my-2">
-            Error: cannnot get datas
+            Error: Failed to get datas.
           </div>
         ) : (
           !loading &&
