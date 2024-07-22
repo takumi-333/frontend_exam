@@ -1,39 +1,39 @@
-"use client";
+'use client'
 
-import ItemTableContent from "@/components/ItemTableContent";
-import { QiitaItem, Query } from "@/type";
-import SearchBar from "./_components/SearchBar";
-import React, { useEffect, useState } from "react";
-import ApiKeyModal from "@/components/ApiKeyModal";
-import TableSkeleton from "@/components/TableSkeleton";
-import PrevButton from "./_components/PrevButton";
-import NextButton from "./_components/NextButton";
-import ItemtableContainer from "@/components/ItemTableContainer";
-import { fetchItems } from "@/actions/items.action";
-import { useRecoilValue } from "recoil";
-import { apiKeyState } from "../state/apiKeyState";
-import { queryState } from "../state/queryState";
+import ItemTableContent from '@/components/ItemTableContent'
+import { QiitaItem, Query } from '@/type'
+import SearchBar from './_components/SearchBar'
+import React, { useEffect, useState } from 'react'
+import ApiKeyModal from '@/components/ApiKeyModal'
+import TableSkeleton from '@/components/TableSkeleton'
+import PrevButton from './_components/PrevButton'
+import NextButton from './_components/NextButton'
+import ItemtableContainer from '@/components/ItemTableContainer'
+import { fetchItems } from '@/actions/items.action'
+import { useRecoilValue } from 'recoil'
+import { apiKeyState } from '../state/apiKeyState'
+import { queryState } from '../state/queryState'
 
 export default function Home() {
-  const [itemDatas, setItemDatas] = useState<QiitaItem[]>([]);
-  const query: Query = useRecoilValue(queryState);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
-  const apiKey = useRecoilValue(apiKeyState);
+  const [itemDatas, setItemDatas] = useState<QiitaItem[]>([])
+  const query: Query = useRecoilValue(queryState)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false)
+  const apiKey = useRecoilValue(apiKeyState)
 
   useEffect(() => {
-    setError(false);
-    setLoading(true);
+    setError(false)
+    setLoading(true)
     fetchItems(query, apiKey)
       .then((itemDatas) => {
-        setItemDatas(itemDatas);
-        setLoading(false);
+        setItemDatas(itemDatas)
+        setLoading(false)
       })
       .catch(() => {
-        setLoading(false);
-        setError(true);
-      });
-  }, [query]);
+        setLoading(false)
+        setError(true)
+      })
+  }, [query])
 
   return (
     <main>
@@ -45,25 +45,12 @@ export default function Home() {
           </div>
         </div>
         {error ? (
-          <div className="text-red-500 text-base flex my-2">
-            Error: Failed to get datas.
-          </div>
+          <div className="text-red-500 text-base flex my-2">Error: Failed to get datas.</div>
         ) : (
-          !loading &&
-          itemDatas.length == 0 && (
-            <div className="text-red-500 text-base flex my-2">No datas...</div>
-          )
+          !loading && itemDatas.length == 0 && <div className="text-red-500 text-base flex my-2">No datas...</div>
         )}
         <ItemtableContainer
-          TableContent={
-            error ? (
-              <></>
-            ) : loading ? (
-              <TableSkeleton />
-            ) : (
-              <ItemTableContent itemDatas={itemDatas} />
-            )
-          }
+          TableContent={error ? <></> : loading ? <TableSkeleton /> : <ItemTableContent itemDatas={itemDatas} />}
         />
         {loading || error ? (
           <></>
@@ -87,5 +74,5 @@ export default function Home() {
         )}
       </div>
     </main>
-  );
+  )
 }

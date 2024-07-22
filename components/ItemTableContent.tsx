@@ -14,10 +14,9 @@ const ItemTableContent = ({ itemDatas }: { itemDatas: QiitaItem[] }) => {
           </TableCell>
           <TableCell className="w-1/12 text-sm p-1 text-center">
             {itemData.user.id ? (
-                <Link href={`/user/${itemData.user.id}`}>
-                    <p className="hover:underline">@{itemData.user.id}</p>
-                </Link>
-              
+              <Link href={`/user/${itemData.user.id}`}>
+                <p className="hover:underline">@{itemData.user.id}</p>
+              </Link>
             ) : (
               <p className="text-muted-foreground">不明</p>
             )}
@@ -31,7 +30,11 @@ const ItemTableContent = ({ itemDatas }: { itemDatas: QiitaItem[] }) => {
             </a>
           </TableCell>
           <TableCell className="w-1/12 p-1 text-center">
-            <Button asChild variant="outline" className="sm:px-4 sm:py-2 px-2 py-1 text-xs">
+            <Button
+              asChild
+              variant="outline"
+              className="sm:px-4 sm:py-2 px-2 py-1 text-xs"
+            >
               <Link href={`/${itemData.id}`}>詳細</Link>
             </Button>
           </TableCell>

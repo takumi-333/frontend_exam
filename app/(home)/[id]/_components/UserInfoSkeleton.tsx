@@ -1,5 +1,5 @@
-import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import React from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const UserInfoSkeleton = () => {
   return (
@@ -7,7 +7,7 @@ const UserInfoSkeleton = () => {
       <Skeleton className="rounded-full w-[32px] h-[32px]" />
       <Skeleton className="h-4 w-[80px]" />
     </div>
-  );
-};
+  )
+}
 
-export default UserInfoSkeleton;
+export default UserInfoSkeleton

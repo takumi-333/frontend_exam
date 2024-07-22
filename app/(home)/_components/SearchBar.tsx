@@ -1,42 +1,40 @@
-"use client";
+'use client'
 
-import { Query } from "@/type";
-import React, { ChangeEvent, KeyboardEvent, useState } from "react";
-import { IoIosSearch } from "react-icons/io";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useRecoilState } from "recoil";
-import { queryState } from "@/app/state/queryState";
+import { Query } from '@/type'
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
+import { IoIosSearch } from 'react-icons/io'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { useRecoilState } from 'recoil'
+import { queryState } from '@/app/state/queryState'
 
 const SearchBar = () => {
-  const [query, setQuery] = useRecoilState(queryState);
-  const [keyword, setKeyword] = useState<string>(query.body ? query.body : "");
-  const [userId, setUserId] = useState<string>(
-    query.userId ? query.userId : "",
-  );
+  const [query, setQuery] = useRecoilState(queryState)
+  const [keyword, setKeyword] = useState<string>(query.body ? query.body : '')
+  const [userId, setUserId] = useState<string>(query.userId ? query.userId : '')
   const handleKeywordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-  };
+    setKeyword(e.target.value)
+  }
 
   const handleUserIdInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUserId(e.target.value);
-  };
+    setUserId(e.target.value)
+  }
 
   const handleSearch = () => {
     const newQuery: Query = {
       numPage: 1,
       title: keyword ? keyword : undefined,
       body: keyword ? keyword : undefined,
-      userId: userId ? userId : undefined,
-    };
-    setQuery(newQuery);
-  };
+      userId: userId ? userId : undefined
+    }
+    setQuery(newQuery)
+  }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
+    if (e.key === 'Enter') {
+      handleSearch()
     }
-  };
+  }
 
   return (
     <div className="w-full flex flex-raw items-center gap-2">
@@ -60,7 +58,7 @@ const SearchBar = () => {
         <IoIosSearch className="h-4 w-4" />
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

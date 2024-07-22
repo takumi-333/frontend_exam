@@ -1,8 +1,8 @@
-import { QiitaItem } from "@/type";
-import React from "react";
-import ItemBody from "./ItemBody";
-import { Card } from "@/components/ui/card";
-import ItemHeader from "./ItemHeader";
+import { QiitaItem } from '@/type'
+import React from 'react'
+import ItemBody from './ItemBody'
+import { Card } from '@/components/ui/card'
+import ItemHeader from './ItemHeader'
 
 const ItemContainer = ({ itemData }: { itemData?: QiitaItem }) => {
   return (
@@ -14,7 +14,7 @@ const ItemContainer = ({ itemData }: { itemData?: QiitaItem }) => {
         </>
       )}
     </Card>
-  );
-};
+  )
+}
 
-export default ItemContainer;
+export default ItemContainer

@@ -1,6 +1,6 @@
-import { CardContent, CardHeader } from "@/components/ui/card";
-import { QiitaUser } from "@/type";
-import React from "react";
+import { CardContent, CardHeader } from '@/components/ui/card'
+import { QiitaUser } from '@/type'
+import React from 'react'
 
 const UserInfo = ({ userData }: { userData: QiitaUser }) => {
   return (
@@ -13,12 +13,8 @@ const UserInfo = ({ userData }: { userData: QiitaUser }) => {
           height={64}
           className="rounded-full border"
         />
-        <p className="md:text-2xl text-xl font-semibold">
-          {userData.name ? userData.name : "名前未設定"}
-        </p>
-        <p className="md:text-xl text-base text-muted-foreground">
-          @{userData.id}
-        </p>
+        <p className="md:text-2xl text-xl font-semibold">{userData.name ? userData.name : '名前未設定'}</p>
+        <p className="md:text-xl text-base text-muted-foreground">@{userData.id}</p>
       </CardContent>
       <CardContent className="flex gap-4 items-center">
         <div className="flex flex-col gap-1 items-center">
@@ -35,7 +31,7 @@ const UserInfo = ({ userData }: { userData: QiitaUser }) => {
         </div>
       </CardContent>
     </CardHeader>
-  );
-};
+  )
+}
 
-export default UserInfo;
+export default UserInfo

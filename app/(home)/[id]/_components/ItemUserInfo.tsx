@@ -1,6 +1,6 @@
-import { QiitaUser } from "@/type";
-import Link from "next/link";
-import React from "react";
+import { QiitaUser } from '@/type'
+import Link from 'next/link'
+import React from 'react'
 
 const ItemUserInfo = ({ userData }: { userData?: QiitaUser }) => {
   return (
@@ -20,7 +20,7 @@ const ItemUserInfo = ({ userData }: { userData?: QiitaUser }) => {
         </Link>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ItemUserInfo;
+export default ItemUserInfo

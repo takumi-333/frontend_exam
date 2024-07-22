@@ -1,8 +1,8 @@
-import { Card } from "@/components/ui/card";
-import { QiitaUser } from "@/type";
-import React from "react";
-import UserInfo from "./UserInfo";
-import UserItems from "./UserItems";
+import { Card } from '@/components/ui/card'
+import { QiitaUser } from '@/type'
+import React from 'react'
+import UserInfo from './UserInfo'
+import UserItems from './UserItems'
 
 const UserContainer = ({ userData }: { userData?: QiitaUser }) => {
   return (
@@ -16,7 +16,7 @@ const UserContainer = ({ userData }: { userData?: QiitaUser }) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default UserContainer;
+export default UserContainer
